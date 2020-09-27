@@ -1,0 +1,34 @@
+cabal-version:       2.4
+
+name:                xmobar-braillebars
+version:             0.1.0.0
+synopsis:            Multicore CPU utilization bar for xmobar using braille patterns
+homepage:            https://github.com/angs/xmobar-braillebars
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Altti Tammi
+copyright:           2012, Altti Tammi
+category:            System
+extra-source-files:  CHANGELOG.md, README.md
+
+common common
+  build-depends:       base ^>=4.13.0.0
+  default-language:    Haskell2010
+
+library
+  import:              common
+  hs-source-dirs:      src
+  exposed-modules:     BrailleBar
+
+executable cpubar
+  import:              common
+  hs-source-dirs:      app/cpubar
+  main-is:             Main.hs
+  build-depends:       xmobar-braillebars
+
+executable netbar
+  import:              common
+  hs-source-dirs:      app/netbar
+  main-is:             Main.hs
+  build-depends:       xmobar-braillebars
+                     , directory ^>=1.3.6
